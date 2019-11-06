@@ -1,4 +1,5 @@
 import React from "react";
+import "../CSS/navbar.css";
 
 class NavBar extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class NavBar extends React.Component {
               src="https://www.pinclipart.com/picdir/big/113-1137880_hamburger-drawing-at-getdrawings-com-free-for-drawing.png"
               width={30}
               height={30}
-              className="d-inline-block align-top"
+              className="d-inline-block align-top brand"
               alt=""
             />
             Pedidos
@@ -30,17 +31,17 @@ class NavBar extends React.Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <a className="nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
+                  Inicio <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
+                <a className="nav-link" href="menu">
+                  Menu
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" href="#">
-                  Disabled
+                <a className="nav-link" href="nosotros">
+                  Sobre nosotros
                 </a>
               </li>
             </ul>
@@ -48,14 +49,14 @@ class NavBar extends React.Component {
               <input
                 className="form-control mr-sm-2"
                 type="text"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder="Buscar"
+                aria-label="Buscar"
               />
               <button
                 className="btn btn-outline-success my-2 my-sm-0 button"
                 type="submit"
               >
-                Search
+                Buscar
               </button>
             </form>
           </div>
