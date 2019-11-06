@@ -1,39 +1,38 @@
 .header {
-    padding-bottom: 0px;
-
+  padding-bottom: 0px;
 }
 h1 {
-    font-weight: bold;
-    color: darkcyan;
-    font-size: 1.5rem;
+  font-weight: bold;
+  color: darkcyan;
+  font-size: 1.5rem;
 }
 
 .body {
-    background-color: purple;
-    padding-top: 100px;
+  background-color: purple;
+  padding-top: 100px;
 }
 
 .content-search {
-    width: 685px;
-    display: flex;
-    margin: 0 auto;
+  width: 685px;
+  display: flex;
+  margin: 0 auto;
 }
 
-.img{
-    float: left;
-    margin: .5em;
-    width: 150px
+.img {
+  float: left;
+  margin: 0.5em;
+  width: 150px;
 }
 
 .test {
-    float: right;
+  float: right;
 }
 .test2 {
-   width:max-content;
+  width: max-content;
 }
 
-.button{
-    color:white;
-    border-color:darkgoldenrod;
-    background-color: darkorange;
+.button {
+  color: white;
+  border-color: darkgoldenrod;
+  background-color: darkorange;
 }

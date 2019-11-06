@@ -1,12 +1,12 @@
 import React from "react";
-import "../CSS/navbar.css";
+import "./navbar.css";
 
 class NavBar extends React.Component {
   render() {
     return (
       <header className="header">
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="">
             <img
               src="https://www.pinclipart.com/picdir/big/113-1137880_hamburger-drawing-at-getdrawings-com-free-for-drawing.png"
               width={30}
@@ -37,6 +37,11 @@ class NavBar extends React.Component {
               <li className="nav-item">
                 <a className="nav-link" href="menu">
                   Menu
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="nosotros">
+                  Pedidos online
                 </a>
               </li>
               <li className="nav-item">
