@@ -4,6 +4,7 @@ import "./LocationInput.css";
 class LocationInput extends React.Component {
   render() {
     return (
+      //col-sm-12 col-md-4
       <div className="content-search">
         <select className="form-control">
           <option>Localidad</option>
@@ -12,10 +13,7 @@ class LocationInput extends React.Component {
           <option>Moron</option>
         </select>
         <input type="text" className="form-control" placeholder="Direccion" />
-        <button
-          className="btn btn-outline-success my-2 my-sm-0 button"
-          type="submit"
-        >
+        <button className="btn btn-outline-success button" type="submit">
           Buscar
         </button>
       </div>

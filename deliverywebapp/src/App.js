@@ -16,7 +16,6 @@ function App() {
         <img src={"https://picsum.photos/200"} alt="" />
         <LocationInput />
         <Carousel />
-        <button className="btn btn-secondary btn-sm">Increment</button>
       </div>
       <BottomNavBar />
     </div>
