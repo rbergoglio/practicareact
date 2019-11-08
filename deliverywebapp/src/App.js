@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Carousel from "./components/Carousel";
 import BottomNavBar from "./components/BottomNavBar";
 import LocationInput from "./components/LocationInput";
+import FoodPictures from "./components/FoodPictures";
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
 
       <div className="blank-space-top"></div>
       <div>
-        <img src={"https://picsum.photos/200"} alt="" />
         <LocationInput />
         <Carousel />
+        <FoodPictures />
       </div>
       <BottomNavBar />
     </div>
