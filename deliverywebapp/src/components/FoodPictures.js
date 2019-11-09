@@ -5,8 +5,8 @@ import FoodPicture from "./FoodPicture";
 class FoodPictures extends React.Component {
   render() {
     return (
-      <div class="container">
-        <div class="row">
+      <div className="container">
+        <div className="row">
           <FoodPicture
             src="https://cdn.colombia.com/sdi/2018/10/16/empanadas-de-pollo-678550.jpg"
             foodName="Empanadas"
