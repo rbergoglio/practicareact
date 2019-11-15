@@ -57,10 +57,10 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <h3>Create New User</h3>
+        <h3>Registrarse</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Username: </label>
+            <label>Usuario: </label>
             <input
               type="text"
               required
@@ -70,7 +70,7 @@ class Register extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label>Password: </label>
+            <label>Contraseña: </label>
             <input
               type="text"
               required
@@ -83,7 +83,7 @@ class Register extends React.Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create User"
+              value="Crear usuario"
               className="btn btn-primary"
             />
           </div>
