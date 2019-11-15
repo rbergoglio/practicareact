@@ -1,12 +1,12 @@
 import React from "react";
 import FoodPicture from "./FoodPicture";
 
-//todo: mejorar lo de foodpicture, algo tipo un for que vaya sacando datos de una lista de tuplas
+//todo: mejorar lo de foodpicture, algo tipo un for que vaya sacando datos de una lista de tuplas?
 class FoodPictures extends React.Component {
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      <div class="container">
+        <div class="row">
           <FoodPicture
             src="https://cdn.colombia.com/sdi/2018/10/16/empanadas-de-pollo-678550.jpg"
             foodName="Empanadas"
