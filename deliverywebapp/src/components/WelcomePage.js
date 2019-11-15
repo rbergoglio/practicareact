@@ -16,7 +16,7 @@ class WelcomePage extends React.Component {
             sm={6}
             md={8}
             lg={10}
-            style={{ "background-color": "green" }}
+            style={{ backgroundColor: "green" }}
           >
             <FoodPictures />
             <Carousel2 />
