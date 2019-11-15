@@ -25,32 +25,33 @@ router.route("/add").post((req, res) => {
     .then(() => res.json("Food added!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
-/*
-router.route('/:id').get((req, res) => {
-  Exercise.findById(req.params.id)
-    .then(exercise => res.json(exercise))
-    .catch(err => res.status(400).json('Error: ' + err));
+
+router.route("/:id").get((req, res) => {
+  Food.findById(req.params.id)
+    .then(food => res.json(food))
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route('/:id').delete((req, res) => {
-  Exercise.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Exercise deleted.'))
-    .catch(err => res.status(400).json('Error: ' + err));
+router.route("/:id").delete((req, res) => {
+  Food.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Food deleted."))
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route('/update/:id').post((req, res) => {
-  Exercise.findById(req.params.id)
-    .then(exercise => {
-      exercise.username = req.body.username;
-      exercise.description = req.body.description;
-      exercise.duration = Number(req.body.duration);
-      exercise.date = Date.parse(req.body.date);
+router.route("/update/:id").post((req, res) => {
+  Food.findById(req.params.id)
+    .then(food => {
+      food.foodName = req.body.foodName;
+      food.description = req.body.description;
+      food.price = Number(req.body.price);
+      food.imgUrl = req.body.imgUrl;
 
-      exercise.save()
-        .then(() => res.json('Exercise updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+      food
+        .save()
+        .then(() => res.json("Food updated!"))
+        .catch(err => res.status(400).json("Error: " + err));
     })
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json("Error: " + err));
 });
-*/
+
 module.exports = router;
