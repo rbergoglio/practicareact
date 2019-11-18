@@ -40,7 +40,7 @@ class Register extends React.Component {
     console.log(user);
 
     axios
-    // .post("http://localhost:5000/users/add", user)
+      // .post("http://localhost:5000/users/add", user)
       .post("https://rbergoglio-deliveryapp.herokuapp.com/users/add", user)
 
       .then(res => console.log(res.data));
@@ -62,7 +62,7 @@ class Register extends React.Component {
         <h3>Registrarse</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Usuario: </label>
+            <label>Email: </label>
             <input
               type="text"
               required
