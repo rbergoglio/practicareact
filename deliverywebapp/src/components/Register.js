@@ -7,18 +7,18 @@ class Register extends React.Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeFirstName = this.onChangeFirstName.bind(this);
+    this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      firstName: "",
+      lastName: ""
     };
   }
-  /*
-  componentDidMount(){
 
-  }
-*/
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
@@ -29,13 +29,25 @@ class Register extends React.Component {
       password: e.target.value
     });
   }
+  onChangeFirstName(e) {
+    this.setState({
+      firstName: e.target.value
+    });
+  }
+  onChangeLastName(e) {
+    this.setState({
+      lastName: e.target.value
+    });
+  }
 
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
     };
     console.log(user);
 
@@ -47,7 +59,9 @@ class Register extends React.Component {
 
     this.setState({
       username: "",
-      password: ""
+      password: "",
+      firstName: "",
+      lastName: ""
     });
 
     //window.location = "/";
@@ -80,6 +94,28 @@ class Register extends React.Component {
               className="form-control"
               value={this.state.password}
               onChange={this.onChangePassword}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Nombre: </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.firstName}
+              onChange={this.onChangefirstName}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Apellido: </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.lastName}
+              onChange={this.onChangelastName}
             />
           </div>
 
