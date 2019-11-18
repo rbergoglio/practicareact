@@ -3,6 +3,7 @@ import React from "react";
 import Carousel2 from "./Carousel2";
 import FoodPictures from "./FoodPictures";
 import { Grid, Row, Col } from "react-flexbox-grid";
+import GetTest from "./GetTest";
 
 class WelcomePage extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class WelcomePage extends React.Component {
             style={{ backgroundColor: "green" }}
           >
             <FoodPictures />
+            <GetTest></GetTest>
             <Carousel2 />
           </Col>
           <Col xs={6} sm={3} md={2} lg={1} />

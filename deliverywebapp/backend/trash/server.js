@@ -28,13 +28,6 @@ app.listen(port, () => {
 });
 
 /* 
-bajarse heroku cli
-npm install -g heroku
-
-para hacer cambios en el back:
-cd backend
-git commit -am ""
-git push heroku master
 
 
 
