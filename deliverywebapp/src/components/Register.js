@@ -104,7 +104,7 @@ class Register extends React.Component {
               required
               className="form-control"
               value={this.state.firstName}
-              onChange={this.onChangefirstName}
+              onChange={this.onChangeFirstName}
             />
           </div>
 
@@ -115,7 +115,7 @@ class Register extends React.Component {
               required
               className="form-control"
               value={this.state.lastName}
-              onChange={this.onChangelastName}
+              onChange={this.onChangeLastName}
             />
           </div>
 
