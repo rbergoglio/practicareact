@@ -54,7 +54,8 @@ class Register extends React.Component {
   }
 
   /*
-  
+  https://mappinggis.com/2012/05/como-insertar-un-mapa-de-google-maps-en-tu-web/
+  agregar: email, direccion
   */
   render() {
     return (
