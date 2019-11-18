@@ -1,12 +1,27 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-class Welcome extends React.Component {
+/*
+  <div class="test">
+                <img
+                  src="https://sifu.unileversolutions.com/image/es-MX/recipe-topvisual/2/1260-709/hamburguesa-clasica-50425188.jpg"
+                  class="img"
+                />
+              </div>
+*/
+class FoodItem extends React.Component {
   render() {
     return (
       <div class="container">
         <div class="row">
-          <div class="col-md-2 "></div>
+          <div class="col-md-2 d-none d-sm-block">
+            <div class="test">
+              <img
+                src="https://sifu.unileversolutions.com/image/es-MX/recipe-topvisual/2/1260-709/hamburguesa-clasica-50425188.jpg"
+                class="img"
+              />
+            </div>
+          </div>
           <div class="col-md-10">
             <div class="row">
               <div class="col-6 col-sm-6 col-md-8">
@@ -26,4 +41,4 @@ class Welcome extends React.Component {
   }
 }
 
-export default Welcome;
+export default FoodItem;
