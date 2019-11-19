@@ -26,10 +26,10 @@ class FoodItem extends React.Component {
                   {this.props.foodName} ${this.props.price}
                 </p>
               </div>
-              <div className="col-6 col-sm-6 col-md-4">
+              {/*<div className="col-6 col-sm-6 col-md-4">
                 1<Button>+</Button>
                 <Button>-</Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

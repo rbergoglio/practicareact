@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import FoodItem from "./FoodItem";
+import Button from "react-bootstrap/Button";
 /*
 <tr>
   <td>{props.food.foodName}</td>
@@ -12,13 +13,16 @@ import FoodItem from "./FoodItem";
 </tr>;
 */
 const Food = props => (
-  <FoodItem
-    foodName={props.food.foodName}
-    description={props.food.description}
-    price={props.food.price}
-    stock={props.food.stock}
-    imgUrl={props.food.imgUrl}
-  ></FoodItem>
+  <div>
+    <FoodItem
+      foodName={props.food.foodName}
+      description={props.food.description}
+      price={props.food.price}
+      stock={props.food.stock}
+      imgUrl={props.food.imgUrl}
+    />
+    <Button onClick={() => alert(props.food.price)}>as</Button>
+  </div>
 );
 
 export default class FoodList extends Component {
@@ -35,6 +39,14 @@ export default class FoodList extends Component {
       })
       .catch(error => {
         console.log(error);
+      });
+  }
+
+  addFood(id) {
+    axios
+      .get("https://rbergoglio-deliveryapp.herokuapp.com/food/" + id)
+      .then(response => {
+        console.log(response.data);
       });
   }
 
