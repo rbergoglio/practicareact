@@ -12,6 +12,7 @@ import Button from "react-bootstrap/Button";
   <td>{props.food.stock}</td>
 </tr>;
 */
+
 const Food = props => (
   <div>
     <FoodItem
@@ -21,14 +22,41 @@ const Food = props => (
       stock={props.food.stock}
       imgUrl={props.food.imgUrl}
     />
-    <Button onClick={() => alert(props.food.price)}>as</Button>
+    <Button
+      onClick={() => {
+        props.addFood(props.food.price, props.food.foodName);
+      }}
+    >
+      as
+    </Button>
   </div>
 );
 
 export default class FoodList extends Component {
   constructor(props) {
     super(props);
-    this.state = { food: [] };
+    this.addFood = this.addFood.bind(this);
+    this.state = {
+      food: [],
+      plates: [],
+      deliveryman: "ddss",
+      total: 0,
+      address: "aaa"
+    };
+  }
+
+  addFood(price, plate) {
+    this.setState({
+      total: this.state.total + price,
+      plates: this.state.plates + plate
+    });
+    alert(
+      "Pedido: Total:" +
+        this.state.total +
+        " Comidas: " +
+        this.state.plates +
+        "."
+    );
   }
 
   componentDidMount() {
@@ -41,18 +69,38 @@ export default class FoodList extends Component {
         console.log(error);
       });
   }
-
+  /*
   addFood(id) {
     axios
       .get("https://rbergoglio-deliveryapp.herokuapp.com/food/" + id)
       .then(response => {
+
         console.log(response.data);
+      });
+  }
+*/
+  createOrder() {
+    const order = {
+      plates: this.state.plates,
+      deliveryman: this.state.deliveryman,
+      total: this.state.total,
+      address: this.state.address
+    };
+    console.log(order);
+
+    axios
+      .post("https://rbergoglio-deliveryapp.herokuapp.com/order/add", order)
+      .then(res => console.log(res.data))
+      .catch(error => {
+        console.log(error);
       });
   }
 
   foodList() {
     return this.state.food.map(currentfood => {
-      return <Food food={currentfood} key={currentfood._id} />;
+      return (
+        <Food food={currentfood} key={currentfood._id} addFood={this.addFood} />
+      );
     });
   }
 
@@ -60,6 +108,14 @@ export default class FoodList extends Component {
     return (
       <div>
         {this.foodList()}
+        <Button
+          onClick={() => {
+            this.createOrder();
+          }}
+        >
+          Continuar $TOTAL
+        </Button>
+
         {/*  <Table responsive striped bordered size="sm">
           <thead className="thead-light">
             <tr>

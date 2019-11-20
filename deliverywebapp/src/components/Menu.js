@@ -10,8 +10,6 @@ class Menu extends React.Component {
     return (
       <div>
         <FoodList></FoodList>
-
-        <Button>Continuar $TOTAL</Button>
       </div>
     );
   }
