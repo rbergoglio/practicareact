@@ -14,21 +14,36 @@ import Button from "react-bootstrap/Button";
 */
 
 const Food = props => (
-  <div>
-    <FoodItem
-      foodName={props.food.foodName}
-      description={props.food.description}
-      price={props.food.price}
-      stock={props.food.stock}
-      imgUrl={props.food.imgUrl}
-    />
-    <Button
-      onClick={() => {
-        props.addFood(props.food.price, props.food.foodName);
-      }}
-    >
-      as
-    </Button>
+  <div className="container">
+    <div className="row">
+      <div className="col-6 col-sm-6 col-md-10">
+        <FoodItem
+          foodName={props.food.foodName}
+          description={props.food.description}
+          price={props.food.price}
+          stock={props.food.stock}
+          imgUrl={props.food.imgUrl}
+        />
+      </div>
+      <div className="col-6 col-sm-6 col-md-2" style={{ margin: "auto" }}>
+        <Button
+          style={{ margin: "10px" }}
+          onClick={() => {
+            props.addFood(props.food.price, props.food.foodName);
+          }}
+        >
+          +
+        </Button>
+        <Button
+          style={{ margin: "10px" }}
+          onClick={() => {
+            props.addFood(props.food.price, props.food.foodName);
+          }}
+        >
+          Borrar
+        </Button>
+      </div>
+    </div>
   </div>
 );
 
@@ -48,7 +63,7 @@ export default class FoodList extends Component {
   addFood(price, plate) {
     this.setState({
       total: this.state.total + price,
-      plates: this.state.plates + plate
+      plates: this.state.plates.concat(plate)
     });
     alert(
       "Pedido: Total:" +
@@ -94,6 +109,13 @@ export default class FoodList extends Component {
       .catch(error => {
         console.log(error);
       });
+    this.state = {
+      food: [],
+      plates: [],
+      deliveryman: "ddss",
+      total: 0,
+      address: "aaa"
+    };
   }
 
   foodList() {
@@ -113,7 +135,7 @@ export default class FoodList extends Component {
             this.createOrder();
           }}
         >
-          Continuar $TOTAL
+          Continuar ${this.state.total}
         </Button>
 
         {/*  <Table responsive striped bordered size="sm">
