@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import FoodItem from "./FoodItem";
 import Button from "react-bootstrap/Button";
-/*
-<tr>
-  <td>{props.food.foodName}</td>
-  <td>{props.food.description}</td>
-  <td>{props.food.price}</td>
-  <td>{props.food.stock}</td>
-</tr>;
-*/
 
 const Food = props => (
   <div className="container">
@@ -60,6 +52,9 @@ const Food = props => (
   </div>
 );
 
+
+
+
 export default class FoodList extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +68,7 @@ export default class FoodList extends Component {
     };
   }
 
+  
   addFood(price, plate) {
     this.setState({
       total: this.state.total + price,
@@ -143,7 +139,13 @@ export default class FoodList extends Component {
     return (
       <div>
         {this.foodList()}
-        <Button
+        <Button style={{
+            margin: "10px",
+            color: "orange",
+            color: "white",
+            borderColor: "darkgoldenrod",
+            backgroundColor: "darkorange"
+          }}
           onClick={() => {
             this.createOrder();
           }}

@@ -4,6 +4,7 @@ import Carousel2 from "./Carousel2";
 import FoodPictures from "./FoodPictures";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import GetTest from "./GetTest";
+import CartTest from "./CartTest";
 
 class WelcomePage extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class WelcomePage extends React.Component {
           >
             <FoodPictures />
             <Carousel2></Carousel2>
+           
           </Col>
           <Col xs={6} sm={3} md={2} lg={1} />
         </Row>

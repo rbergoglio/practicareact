@@ -3,6 +3,7 @@ import "./Menu.css";
 import FoodItem from "./FoodItem";
 import { Button } from "react-bootstrap";
 import FoodList from "./FoodList";
+import CartTest from "./CartTest";
 import LocationInput from "./LocationInput";
 
 class Menu extends React.Component {
@@ -10,7 +11,7 @@ class Menu extends React.Component {
     return (
       <div className="foodList">
         <FoodList></FoodList>
-        aa
+        <CartTest></CartTest>
       </div>
     );
   }
