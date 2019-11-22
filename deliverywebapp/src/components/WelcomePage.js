@@ -10,21 +10,22 @@ class WelcomePage extends React.Component {
     return (
       <div className="App">
         <div className="blank-space-top"></div>
+
         <Row>
           <Col xs={12} sm={3} md={2} lg={1} />
           <Col
-            xs={6}
+            xs={12}
             sm={6}
             md={8}
             lg={10}
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "white" }}
           >
             <FoodPictures />
-            <GetTest></GetTest>
-            <Carousel2 />
+            <Carousel2></Carousel2>
           </Col>
           <Col xs={6} sm={3} md={2} lg={1} />
         </Row>
+        
       </div>
     );
   }

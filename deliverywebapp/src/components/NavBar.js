@@ -46,6 +46,12 @@ class NavBar extends React.Component {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/Nosotros" className="nav-link">
+                  Sobre nosotros
+                </Link>
+              </li>
+              {/* 
+              <li className="nav-item">
                 <Link to="/Login" className="nav-link">
                   Login
                 </Link>
@@ -53,6 +59,7 @@ class NavBar extends React.Component {
               <li className="nav-item" className="nav-link">
                 Bienvenido, invitado
               </li>
+              */}
             </ul>
             {/*
             <form className="form-inline mt-2 mt-md-0">

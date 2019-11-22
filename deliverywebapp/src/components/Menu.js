@@ -8,8 +8,9 @@ import LocationInput from "./LocationInput";
 class Menu extends React.Component {
   render() {
     return (
-      <div>
+      <div className="foodList">
         <FoodList></FoodList>
+        aa
       </div>
     );
   }

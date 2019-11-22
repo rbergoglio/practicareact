@@ -15,7 +15,7 @@ import Button from "react-bootstrap/Button";
 
 const Food = props => (
   <div className="container">
-    <div className="row">
+    <div className="row" style={{ backgroundColor: "white" }}>
       <div className="col-6 col-sm-6 col-md-10">
         <FoodItem
           foodName={props.food.foodName}
@@ -27,15 +27,28 @@ const Food = props => (
       </div>
       <div className="col-6 col-sm-6 col-md-2" style={{ margin: "auto" }}>
         <Button
-          style={{ margin: "10px" }}
+          style={{
+            margin: "10px",
+            color: "orange",
+            color: "white",
+            borderColor: "darkgoldenrod",
+            backgroundColor: "darkorange"
+          }}
           onClick={() => {
             props.addFood(props.food.price, props.food.foodName);
           }}
+          className="button"
         >
           +
         </Button>
         <Button
-          style={{ margin: "10px" }}
+          style={{
+            margin: "10px",
+            color: "orange",
+            color: "white",
+            borderColor: "darkgoldenrod",
+            backgroundColor: "darkorange"
+          }}
           onClick={() => {
             props.addFood(props.food.price, props.food.foodName);
           }}

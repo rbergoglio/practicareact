@@ -25,8 +25,6 @@ function App() {
       <Route path="/Login" component={Login} />
       <Route path="/Menu" component={Menu} />
       <Route path="/Nosotros" component={AboutUs} />
-
-      <BottomNavBar />
     </Router>
   );
 }

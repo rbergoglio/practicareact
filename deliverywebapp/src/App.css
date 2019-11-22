@@ -24,3 +24,9 @@
 .blank-space-top {
   margin-bottom: 56px;
 }
+
+.button {
+  color: white;
+  border-color: darkgoldenrod;
+  background-color: darkorange;
+}
