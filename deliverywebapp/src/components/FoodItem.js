@@ -27,7 +27,7 @@ class FoodItem extends React.Component {
     return (
       <div>
         <img src={this.props.imgUrl} className="img" />
-        <p>
+        <p style={{ paddingTop: "40px" }}>
           {this.props.foodName} ${this.props.price}
         </p>
       </div>
