@@ -97,7 +97,7 @@ export class AboutUs extends React.Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position2}></Marker>
+
         <Polygon
           positions={[
             [-34.53491442663913, -58.464345932006836],
@@ -109,7 +109,10 @@ export class AboutUs extends React.Component {
             [-34.625862887711804, -58.36555480957032],
             [-34.58884537801345, -58.371391296386726]
           ]}
+          opacity="0.8"
+          fillOpacity="0.1"
         ></Polygon>
+
         <Marker position={position}>
           <Popup>
             <span>
@@ -117,6 +120,8 @@ export class AboutUs extends React.Component {
             </span>
           </Popup>
         </Marker>
+        <Marker position={position2} color="red"></Marker>
+
         <Polyline positions={[position, position2]} />
       </Map>
     );
