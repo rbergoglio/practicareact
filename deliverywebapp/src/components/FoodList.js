@@ -72,7 +72,7 @@ const Food = props => (
             backgroundColor: "darkorange"
           }}
           onClick={() => {
-            props.removeFood(props.food.foodName);
+            props.removeFood(props.food.foodName, props.food.price);
           }}
         >
           -
@@ -104,40 +104,47 @@ export default class FoodList extends Component {
   }
 
   addFood(price, plate) {
-    var joined = this.state.cart.concat(plate);
-    this.setState({
-      total: this.state.total + price,
-      plates: this.state.plates.concat(plate),
-      cart: joined
-    });
-
-    alert(
-      "Pedido: Total:" +
-        this.state.total +
-        " Comidas: " +
-        this.state.plates +
-        "." +
-        JSON.stringify(this.state.cart)
+    this.setState(
+      {
+        total: this.state.total + price,
+        plates: this.state.plates.concat(plate),
+        cart: this.state.cart.concat(plate)
+      },
+      () =>
+        alert(
+          // "Pedido: Total:" +
+          //  this.state.total +
+          //  " Comidas: " +
+          //  this.state.plates +
+          //  "." +
+          this.state.cart
+        )
     );
   }
 
   clearFood() {
-    this.setState({
-      total: 0,
-      plates: []
-    });
-    alert("Carrito borrado");
+    this.setState(
+      {
+        total: 0,
+        plates: []
+      },
+      () => alert("Carrito borrado")
+    );
   }
 
-  removeFood(plate) {
-    for (var i = this.state.cart.length - 1; i >= 0; i--) {
-      if (JSON.stringify(this.state.cart[i].plate).slice(1, -1) == plate) {
-        this.setState({
-          cart: this.state.cart.splice(i, 1)
-        });
-      }
+  removeFood(plate, price) {
+    let index = this.state.cart.indexOf(plate);
+
+    //alert(typeof this.state.cart + "spliced: " + arr);
+    alert(index);
+    if (index > -1) {
+      this.setState(prevState => ({
+        cart: prevState.cart
+          .slice(0, index)
+          .concat(prevState.cart.slice(index + 1)),
+        total: prevState.total - price
+      }));
     }
-    alert(JSON.stringify(this.state.cart));
   }
 
   componentDidMount() {
@@ -210,7 +217,7 @@ export default class FoodList extends Component {
         >
           Continuar ${this.state.total}
         </Button>
-
+        {this.state.cart}
         {/*  <Table responsive striped bordered size="sm">
           <thead className="thead-light">
             <tr>
