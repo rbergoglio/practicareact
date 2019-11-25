@@ -72,7 +72,7 @@ const Food = props => (
             backgroundColor: "darkorange"
           }}
           onClick={() => {
-            props.clearFood();
+            props.removeFood(props.food.foodName);
           }}
         >
           -
@@ -83,39 +83,61 @@ const Food = props => (
   </div>
 );
 
+var cart = {};
+
 export default class FoodList extends Component {
   constructor(props) {
     super(props);
+
     this.addFood = this.addFood.bind(this);
     this.clearFood = this.clearFood.bind(this);
+    this.removeFood = this.removeFood.bind(this);
+
     this.state = {
       food: [],
       plates: [],
       deliveryman: "ddss",
       total: 0,
-      address: "aaa"
+      address: "aaa",
+      cart: []
     };
   }
 
   addFood(price, plate) {
+    var joined = this.state.cart.concat(plate);
     this.setState({
       total: this.state.total + price,
-      plates: this.state.plates.concat(plate)
+      plates: this.state.plates.concat(plate),
+      cart: joined
     });
+
     alert(
       "Pedido: Total:" +
         this.state.total +
         " Comidas: " +
         this.state.plates +
-        "."
+        "." +
+        JSON.stringify(this.state.cart)
     );
   }
+
   clearFood() {
     this.setState({
       total: 0,
       plates: []
     });
     alert("Carrito borrado");
+  }
+
+  removeFood(plate) {
+    for (var i = this.state.cart.length - 1; i >= 0; i--) {
+      if (JSON.stringify(this.state.cart[i].plate).slice(1, -1) == plate) {
+        this.setState({
+          cart: this.state.cart.splice(i, 1)
+        });
+      }
+    }
+    alert(JSON.stringify(this.state.cart));
   }
 
   componentDidMount() {
@@ -128,16 +150,7 @@ export default class FoodList extends Component {
         console.log(error);
       });
   }
-  /*
-  addFood(id) {
-    axios
-      .get("https://rbergoglio-deliveryapp.herokuapp.com/food/" + id)
-      .then(response => {
 
-        console.log(response.data);
-      });
-  }
-*/
   createOrder() {
     const order = {
       plates: this.state.plates,
@@ -165,14 +178,17 @@ export default class FoodList extends Component {
 
   foodList() {
     return this.state.food.map(currentfood => {
-      return (
-        <Food
-          food={currentfood}
-          key={currentfood._id}
-          addFood={this.addFood}
-          clearFood={this.clearFood}
-        />
-      );
+      if (currentfood.stock > 0) {
+        return (
+          <Food
+            food={currentfood}
+            key={currentfood._id}
+            addFood={this.addFood}
+            clearFood={this.clearFood}
+            removeFood={this.removeFood}
+          />
+        );
+      }
     });
   }
 

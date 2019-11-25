@@ -8,6 +8,8 @@ import {
   Polygon
 } from "react-leaflet";
 
+//todo: buscar geocoding gratis o usar google maps y listo
+
 export class AboutUs extends React.Component {
   constructor() {
     super();
