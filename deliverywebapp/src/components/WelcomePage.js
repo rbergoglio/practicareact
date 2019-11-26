@@ -2,10 +2,9 @@ import React from "react";
 
 import Carousel2 from "./Carousel2";
 import FoodPictures from "./FoodPictures";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Row, Col } from "react-flexbox-grid";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
-import GetTest from "./GetTest";
 
 class WelcomePage extends React.Component {
   render() {
@@ -28,8 +27,8 @@ class WelcomePage extends React.Component {
               style={{
                 width: "18rem",
                 margin: "20px",
-                "margin-left": "auto",
-                "margin-right": "auto"
+                marginLeft: "auto",
+                marginRight: "auto"
               }}
             >
               <ListGroup variant="flush">

@@ -6,7 +6,10 @@ class NavBar extends React.Component {
   render() {
     return (
       <header className="header">
-        <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <nav
+          className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark"
+          style={{ backgroundColor: "#688AA7" }}
+        >
           <a className="navbar-brand" href="/">
             <img
               src="https://www.pinclipart.com/picdir/big/113-1137880_hamburger-drawing-at-getdrawings-com-free-for-drawing.png"

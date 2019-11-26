@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import FoodItem from "./FoodItem";
 import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
 /*
 <div className="item">
   <div className="buttons">
@@ -95,7 +96,7 @@ export default class FoodList extends Component {
 
     this.state = {
       food: [],
-      plates: [],
+      //plates: [],
       deliveryman: "ddss",
       total: 0,
       address: "aaa",
@@ -107,18 +108,10 @@ export default class FoodList extends Component {
     this.setState(
       {
         total: this.state.total + price,
-        plates: this.state.plates.concat(plate),
+        //plates: this.state.plates.concat(plate),
         cart: this.state.cart.concat(plate)
       },
-      () =>
-        alert(
-          // "Pedido: Total:" +
-          //  this.state.total +
-          //  " Comidas: " +
-          //  this.state.plates +
-          //  "." +
-          this.state.cart
-        )
+      () => alert(this.state.cart)
     );
   }
 
@@ -126,7 +119,8 @@ export default class FoodList extends Component {
     this.setState(
       {
         total: 0,
-        plates: []
+        cart: []
+        //plates: []
       },
       () => alert("Carrito borrado")
     );
@@ -160,7 +154,7 @@ export default class FoodList extends Component {
 
   createOrder() {
     const order = {
-      plates: this.state.plates,
+      plates: this.state.cart,
       deliveryman: this.state.deliveryman,
       total: this.state.total,
       address: this.state.address
@@ -172,7 +166,7 @@ export default class FoodList extends Component {
       .then(res => console.log(res.data))
       .then(response => {
         this.setState({
-          plates: [],
+          cart: [],
           deliveryman: "ddss",
           total: 0,
           address: "aaa"
@@ -199,36 +193,52 @@ export default class FoodList extends Component {
     });
   }
 
+  cartList() {
+    return this.state.cart.map(currentitem => {
+      return <ListGroup.Item>{currentitem}</ListGroup.Item>;
+    });
+  }
+
   render() {
     return (
       <div>
         {this.foodList()}
-        <Button
-          style={{
-            margin: "10px",
-            color: "orange",
-            color: "white",
-            borderColor: "darkgoldenrod",
-            backgroundColor: "darkorange"
-          }}
-          onClick={() => {
-            this.createOrder();
-          }}
-        >
-          Continuar ${this.state.total}
-        </Button>
-        {this.state.cart}
-        {/*  <Table responsive striped bordered size="sm">
-          <thead className="thead-light">
-            <tr>
-              <th>Comida</th>
-              <th>Descripcion</th>
-              <th>Precio</th>
-              <th>Agregar/Quitar</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </Table>*/}
+
+        <ListGroup>
+          <ListGroup.Item>Carrito</ListGroup.Item>
+          {this.cartList()}
+          <ListGroup.Item>
+            {" "}
+            <Button
+              style={{
+                margin: "10px",
+                color: "orange",
+                color: "white",
+                borderColor: "darkgoldenrod",
+                backgroundColor: "darkorange"
+              }}
+              onClick={() => {
+                this.createOrder();
+              }}
+            >
+              Continuar ${this.state.total}
+            </Button>
+            <Button
+              style={{
+                margin: "10px",
+                color: "orange",
+                color: "white",
+                borderColor: "darkgoldenrod",
+                backgroundColor: "darkorange"
+              }}
+              onClick={() => {
+                this.clearFood();
+              }}
+            >
+              Limpiar Carrito
+            </Button>
+          </ListGroup.Item>
+        </ListGroup>
       </div>
     );
   }

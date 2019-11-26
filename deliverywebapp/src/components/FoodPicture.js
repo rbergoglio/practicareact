@@ -5,7 +5,7 @@ class FoodPicture extends React.Component {
     return (
       <div
         className="col-12 col-sm-12 col-md-6 col-lg-3"
-        style={{ "margin-top": "10px" }}
+        style={{ marginTop: "10px" }}
       >
         <img
           src={this.props.src}
