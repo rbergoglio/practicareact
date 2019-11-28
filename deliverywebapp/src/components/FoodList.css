@@ -1,8 +1,21 @@
-.button {
+.btn-primary {
   margin: 10px;
-  color: white;
-  border-color: darkgoldenrod;
-  background-color: darkorange;
+  color: white !important;
+  border-color: rgb(116, 70, 2) !important;
+  background-color: darkorange !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #b15a0a !important;
+  border-color: #815007 !important; /*set the color you want here*/
+  outline-color: orange !important;
+  box-shadow: orange !important;
+  -webkit-box-shadow: none !important;
 }
 
 .row {

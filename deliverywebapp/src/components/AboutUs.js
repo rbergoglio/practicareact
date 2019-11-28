@@ -51,10 +51,11 @@ export class AboutUs extends React.Component {
   handleClick = e => {
     const { lat, lng } = e.latlng;
     this.setState({ lat2: lat, lng2: lng });
-    alert(this.state.lat2);
-    alert(this.state.lng2);
+
     {
       /*
+       alert(this.state.lat2);
+    alert(this.state.lng2);
     alert(
       this.distance(
         this.state.lat,
@@ -76,7 +77,13 @@ export class AboutUs extends React.Component {
         center={position}
         zoom={this.state.zoom}
         scrollWheelZoom={true}
-        style={{ height: "500px", width: "500px" }}
+        style={{
+          height: "500px",
+          width: "500px",
+          padding: "0",
+          margin: "0",
+          maxWidth: "100%"
+        }}
         onclick={this.handleClick}
         ref="map"
       >

@@ -30,3 +30,7 @@
   border-color: darkgoldenrod;
   background-color: darkorange;
 }
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}

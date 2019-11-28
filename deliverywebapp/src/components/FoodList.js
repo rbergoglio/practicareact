@@ -8,6 +8,10 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Row, Col } from "react-flexbox-grid";
 import Modal from "react-bootstrap/Modal";
 import AboutUs from "./AboutUs";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import "./FoodList.css";
 
 const Food = props => (
   <div
@@ -27,13 +31,6 @@ const Food = props => (
       </div>
       <div className="col-6 col-sm-6 col-md-2" style={{ margin: "auto" }}>
         <Button
-          style={{
-            margin: "10px",
-            color: "orange",
-            color: "white",
-            borderColor: "darkgoldenrod",
-            backgroundColor: "darkorange"
-          }}
           onClick={() => {
             props.addFood(props.food.price, props.food.foodName);
           }}
@@ -42,13 +39,6 @@ const Food = props => (
           +
         </Button>
         <Button
-          style={{
-            margin: "10px",
-            color: "orange",
-            color: "white",
-            borderColor: "darkgoldenrod",
-            backgroundColor: "darkorange"
-          }}
           onClick={() => {
             props.removeFood(props.food.foodName, props.food.price);
           }}
@@ -78,9 +68,7 @@ function Example() {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <AboutUs></AboutUs>
-        </Modal.Body>
+        <Modal.Body></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -100,17 +88,33 @@ export default class FoodList extends Component {
     this.clearFood = this.clearFood.bind(this);
     this.removeFood = this.removeFood.bind(this);
     //this.createOrder = this.createOrder.bind(this);
+    this.onChangeAddress = this.onChangeAddress.bind(this);
+    this.onChangePhone = this.onChangePhone.bind(this);
 
     this.state = {
       food: [],
       //plates: [],
       deliveryman: "ddss",
       total: 0,
-      address: "aaa",
-      cart: []
+      address: "",
+      cart: [],
+      phone: ""
     };
   }
 
+  //
+  onChangeAddress(e) {
+    this.setState({
+      address: e.target.value
+    });
+  }
+
+  onChangePhone(e) {
+    this.setState({
+      phone: e.target.value
+    });
+  }
+  //
   addFood(price, plate) {
     this.setState(
       {
@@ -164,7 +168,8 @@ export default class FoodList extends Component {
       plates: this.state.cart,
       deliveryman: this.state.deliveryman,
       total: this.state.total,
-      address: this.state.address
+      address: this.state.address,
+      phone: this.state.phone
     };
     console.log("AAAAA");
 
@@ -174,9 +179,10 @@ export default class FoodList extends Component {
       .then(response => {
         this.setState({
           cart: [],
-          deliveryman: "ddss",
+          deliveryman: "aaa",
           total: 0,
-          address: "aaa"
+          address: "",
+          phone: ""
         });
       })
       .catch(error => {
@@ -215,39 +221,68 @@ export default class FoodList extends Component {
             <ListGroup>
               {this.foodList()}
 
-              <ListGroup.Item>Carrito</ListGroup.Item>
+              <ListGroup.Item>Carrito ${this.state.total}</ListGroup.Item>
               {this.cartList()}
               <ListGroup.Item>
                 {" "}
                 <Example></Example>
                 <Button
-                  style={{
-                    margin: "10px",
-                    color: "orange",
-                    color: "white",
-                    borderColor: "darkgoldenrod",
-                    backgroundColor: "darkorange"
-                  }}
-                  onClick={() => {
-                    this.createOrder();
-                  }}
-                >
-                  Continuar ${this.state.total}
-                </Button>
-                <Button
-                  style={{
-                    margin: "10px",
-                    color: "orange",
-                    color: "white",
-                    borderColor: "darkgoldenrod",
-                    backgroundColor: "darkorange"
-                  }}
                   onClick={() => {
                     this.clearFood();
                   }}
                 >
                   Limpiar Carrito
                 </Button>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <AboutUs></AboutUs>
+                  </Col>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form>
+                      <Form.Group as={Row} controlId="formHorizontalAddress">
+                        <Form.Label column sm={2}>
+                          Dirección
+                        </Form.Label>
+                        <Col sm={10}>
+                          <Form.Control
+                            type="text"
+                            placeholder="Dirección"
+                            value={this.state.address}
+                            onChange={this.onChangeAddress}
+                          />
+                        </Col>
+                      </Form.Group>
+
+                      <Form.Group as={Row} controlId="formHorizontalPhone">
+                        <Form.Label column sm={2}>
+                          Telefono
+                        </Form.Label>
+                        <Col sm={10}>
+                          <Form.Control
+                            type="text"
+                            placeholder="Telefono"
+                            value={this.state.phone}
+                            onChange={this.onChangePhone}
+                          />
+                        </Col>
+                      </Form.Group>
+
+                      <Form.Group as={Row}>
+                        <Col>
+                          <Button
+                            onClick={() => {
+                              this.createOrder();
+                            }}
+                          >
+                            Continuar ${this.state.total}
+                          </Button>
+                        </Col>
+                      </Form.Group>
+                    </Form>
+                  </Col>
+                </Row>
               </ListGroup.Item>
             </ListGroup>
           </Col>
