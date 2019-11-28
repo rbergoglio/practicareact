@@ -1,4 +1,4 @@
-import React, { createRef, Component } from "react";
+import React from "react";
 import {
   Map,
   Marker,
@@ -24,26 +24,10 @@ export class AboutUs extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  /*   getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-    var R = 6371; // Radius of the earth in km
-    var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
-    var dLon = this.deg2rad(lon2 - lon1);
-    var a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(this.deg2rad(lat1)) *
-        Math.cos(this.deg2rad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in km
-    return d;
+  componentDidMount() {
+    const map = this.refs.map.leafletElement;
+    setTimeout(() => map.invalidateSize(true), 250);
   }
-
-  deg2rad(deg) {
-    return deg * (Math.PI / 180);
-  } */
-
-  /* */
 
   distance(lat1, lon1, lat2, lon2, unit) {
     var radlat1 = (Math.PI * lat1) / 180;
@@ -56,10 +40,10 @@ export class AboutUs extends React.Component {
     dist = Math.acos(dist);
     dist = (dist * 180) / Math.PI;
     dist = dist * 60 * 1.1515;
-    if (unit == "K") {
+    if (unit === "K") {
       dist = dist * 1.609344;
     }
-    if (unit == "M") {
+    if (unit === "M") {
       dist = dist * 0.8684;
     }
     return dist * 1000;
@@ -94,6 +78,7 @@ export class AboutUs extends React.Component {
         scrollWheelZoom={true}
         style={{ height: "500px", width: "500px" }}
         onclick={this.handleClick}
+        ref="map"
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

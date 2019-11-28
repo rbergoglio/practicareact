@@ -1,6 +1,10 @@
-.button{
-    margin: 10px;
-    color: white;
-    border-color: darkgoldenrod;
-    background-color: darkorange;
+.button {
+  margin: 10px;
+  color: white;
+  border-color: darkgoldenrod;
+  background-color: darkorange;
+}
+
+.row {
+  margin: 0px !important;
 }

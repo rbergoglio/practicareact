@@ -5,40 +5,17 @@ import axios from "axios";
 import FoodItem from "./FoodItem";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-/*
-<div className="item">
-  <div className="buttons">
-    <span className="delete-btn" />
-    <span className="like-btn" />
-  </div>
-  <div className="image">
-    <img alt="" src="item-1.png" />
-  </div>
-  <div className="description">
-    <span>Common Projects</span>
-    <span>Bball High</span>
-    <span>White</span>
-  </div>
-  <div className="quantity">
-    <button name="button" className="plus-btn" type="button">
-      <img alt="" src="plus.svg" />
-    </button>
-    <input name="name" type="text" defaultValue={1} />
-    <button name="button" className="minus-btn" type="button">
-      <img alt="" src="minus.svg" />
-    </button>
-  </div>
-  <div className="total-price">$549</div>
-</div>;
-*/
+import { Row, Col } from "react-flexbox-grid";
+import Modal from "react-bootstrap/Modal";
+import AboutUs from "./AboutUs";
+
 const Food = props => (
   <div
-    className="container"
     style={{
       backgroundColor: "white"
     }}
   >
-    <div className="row">
+    <div className="row" style={{ margin: "0px" }}>
       <div className="col-6 col-sm-6 col-md-10">
         <FoodItem
           foodName={props.food.foodName}
@@ -78,13 +55,42 @@ const Food = props => (
         >
           -
         </Button>
-        TOT
       </div>
     </div>
   </div>
 );
 
 var cart = {};
+
+function Example() {
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal size="lg" show={show} onHide={handleClose} className="modal">
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AboutUs></AboutUs>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="secondary">Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
 
 export default class FoodList extends Component {
   constructor(props) {
@@ -93,6 +99,7 @@ export default class FoodList extends Component {
     this.addFood = this.addFood.bind(this);
     this.clearFood = this.clearFood.bind(this);
     this.removeFood = this.removeFood.bind(this);
+    //this.createOrder = this.createOrder.bind(this);
 
     this.state = {
       food: [],
@@ -110,8 +117,8 @@ export default class FoodList extends Component {
         total: this.state.total + price,
         //plates: this.state.plates.concat(plate),
         cart: this.state.cart.concat(plate)
-      },
-      () => alert(this.state.cart)
+      } //,
+      //() => alert(this.state.cart)
     );
   }
 
@@ -121,8 +128,8 @@ export default class FoodList extends Component {
         total: 0,
         cart: []
         //plates: []
-      },
-      () => alert("Carrito borrado")
+      } //,
+      //() => alert("Carrito borrado")
     );
   }
 
@@ -130,7 +137,7 @@ export default class FoodList extends Component {
     let index = this.state.cart.indexOf(plate);
 
     //alert(typeof this.state.cart + "spliced: " + arr);
-    alert(index);
+
     if (index > -1) {
       this.setState(prevState => ({
         cart: prevState.cart
@@ -159,7 +166,7 @@ export default class FoodList extends Component {
       total: this.state.total,
       address: this.state.address
     };
-    console.log(order);
+    console.log("AAAAA");
 
     axios
       .post("https://rbergoglio-deliveryapp.herokuapp.com/order/add", order)
@@ -202,43 +209,50 @@ export default class FoodList extends Component {
   render() {
     return (
       <div>
-        {this.foodList()}
+        <Row style={{ margin: "0px" }}>
+          <Col xs={12} sm={2} md={2} lg={1} />
+          <Col xs={12} sm={8} md={8} lg={10}>
+            <ListGroup>
+              {this.foodList()}
 
-        <ListGroup>
-          <ListGroup.Item>Carrito</ListGroup.Item>
-          {this.cartList()}
-          <ListGroup.Item>
-            {" "}
-            <Button
-              style={{
-                margin: "10px",
-                color: "orange",
-                color: "white",
-                borderColor: "darkgoldenrod",
-                backgroundColor: "darkorange"
-              }}
-              onClick={() => {
-                this.createOrder();
-              }}
-            >
-              Continuar ${this.state.total}
-            </Button>
-            <Button
-              style={{
-                margin: "10px",
-                color: "orange",
-                color: "white",
-                borderColor: "darkgoldenrod",
-                backgroundColor: "darkorange"
-              }}
-              onClick={() => {
-                this.clearFood();
-              }}
-            >
-              Limpiar Carrito
-            </Button>
-          </ListGroup.Item>
-        </ListGroup>
+              <ListGroup.Item>Carrito</ListGroup.Item>
+              {this.cartList()}
+              <ListGroup.Item>
+                {" "}
+                <Example></Example>
+                <Button
+                  style={{
+                    margin: "10px",
+                    color: "orange",
+                    color: "white",
+                    borderColor: "darkgoldenrod",
+                    backgroundColor: "darkorange"
+                  }}
+                  onClick={() => {
+                    this.createOrder();
+                  }}
+                >
+                  Continuar ${this.state.total}
+                </Button>
+                <Button
+                  style={{
+                    margin: "10px",
+                    color: "orange",
+                    color: "white",
+                    borderColor: "darkgoldenrod",
+                    backgroundColor: "darkorange"
+                  }}
+                  onClick={() => {
+                    this.clearFood();
+                  }}
+                >
+                  Limpiar Carrito
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Col>
+          <Col xs={12} sm={2} md={2} lg={1} />
+        </Row>
       </div>
     );
   }
