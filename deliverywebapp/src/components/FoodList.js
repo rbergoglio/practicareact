@@ -45,8 +45,6 @@ const Food = props => (
   </div>
 );
 
-var cart = {};
-
 function Example() {
   const [show, setShow] = React.useState(false);
 
@@ -168,7 +166,6 @@ export default class FoodList extends Component {
       address: this.state.address,
       phone: this.state.phone
     };
-    console.log("AAAAA");
 
     axios
       .post("https://rbergoglio-deliveryapp.herokuapp.com/order/add", order)
@@ -176,11 +173,12 @@ export default class FoodList extends Component {
       .then(response => {
         this.setState({
           cart: [],
-          deliveryman: "aaa",
+          deliveryman: "Carlos",
           total: 0,
           address: "",
           phone: ""
         });
+        console.log("Order added!");
       })
       .catch(error => {
         console.log(error);
@@ -189,7 +187,7 @@ export default class FoodList extends Component {
 
   foodList() {
     return this.state.food.map(currentfood => {
-      if (currentfood.stock > 0) {
+      if (currentfood.stock > 50) {
         return (
           <Food
             food={currentfood}
@@ -235,8 +233,8 @@ export default class FoodList extends Component {
               <ListGroup.Item>Carrito ${this.state.total}</ListGroup.Item>
               {this.cartList()}
               <ListGroup.Item>
-                {" "}
-                <Example></Example>
+                {/*  <Example></Example> */}
+
                 <Button
                   onClick={() => {
                     this.clearFood();
@@ -291,7 +289,7 @@ export default class FoodList extends Component {
                           >
                             Continuar ${this.state.total}
                           </Button>
-                          <Button onClick={this.position}>aaa</Button>
+                          {/*<Button onClick={this.position}>aaa</Button>*/}
                         </Col>
                       </Form.Group>
                     </Form>

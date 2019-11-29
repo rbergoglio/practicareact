@@ -21,8 +21,12 @@ class WelcomePage extends React.Component {
             lg={10}
             style={{ backgroundColor: "white" }}
           >
-            <FoodPictures />
             <Carousel2></Carousel2>
+            <div style={{ margin: "20px" }}>
+              <h2>Nuestros platos destacados</h2>
+            </div>
+
+            <FoodPictures />
             <Card
               style={{
                 width: "18rem",

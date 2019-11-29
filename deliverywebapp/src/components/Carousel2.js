@@ -5,21 +5,21 @@ import "./Carousel2.css";
 class Carousel2 extends React.Component {
   render() {
     return (
-      <Carousel>
+      <Carousel className="carousel">
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 picture"
             src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Hace tu pedido online</h3>
-            <p>Pedi comida barata y rica YA</p>
+            <h3>Hace tu pedido</h3>
+            <p>Pedi YA</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 picture"
             src="https://images.pexels.com/photos/580613/pexels-photo-580613.jpeg?cs=srgb&dl=adults-apron-business-counter-580613.jpg&fm=jpg"
             alt="Third slide"
           />
@@ -31,7 +31,7 @@ class Carousel2 extends React.Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 picture"
             src="https://images.pexels.com/photos/2438323/pexels-photo-2438323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="Third slide"
           />

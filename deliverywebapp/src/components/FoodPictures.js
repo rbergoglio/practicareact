@@ -8,20 +8,20 @@ class FoodPictures extends React.Component {
       <div className="container">
         <div className="row">
           <FoodPicture
-            src="https://cdn.colombia.com/sdi/2018/10/16/empanadas-de-pollo-678550.jpg"
-            foodName="Empanadas"
+            src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            foodName="Pancake con frutas"
           />
           <FoodPicture
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6mqGcr3Vn9Ed6Pb52n2bKMDm_TaGUVD6le0INKrWRcQq4RcNT"
-            foodName="Pizzas"
+            src="https://images.pexels.com/photos/1352270/pexels-photo-1352270.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            foodName="Milanesa con fritas"
           />
           <FoodPicture
-            src="https://d1uz88p17r663j.cloudfront.net/original/84e720e8bc62d59c69924ba55da2b810_ensalada_de_pollo_1.jpg"
-            foodName="Ensaladas"
+            src="https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            foodName="Sopa de calabaza"
           />
           <FoodPicture
-            src="https://sifu.unileversolutions.com/image/es-MX/recipe-topvisual/2/1260-709/hamburguesa-clasica-50425188.jpg"
-            foodName="Hamburgesas"
+            src="https://images.pexels.com/photos/1059943/pexels-photo-1059943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            foodName="Nuggets con crema de albahaca"
           />
         </div>
       </div>

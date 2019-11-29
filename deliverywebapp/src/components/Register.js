@@ -4,33 +4,34 @@ import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-flexbox-grid";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeMail = this.onChangeMail.bind(this);
+    this.onChangePhone = this.onChangePhone.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: "",
-      password: "",
+      mail: "",
+      phone: "",
       firstName: "",
       lastName: ""
     };
   }
 
-  onChangeUsername(e) {
+  onChangeMail(e) {
     this.setState({
-      username: e.target.value
+      mail: e.target.value
     });
   }
-  onChangePassword(e) {
+  onChangePhone(e) {
     this.setState({
-      password: e.target.value
+      phone: e.target.value
     });
   }
   onChangeFirstName(e) {
@@ -48,8 +49,8 @@ class Register extends React.Component {
     e.preventDefault();
 
     const user = {
-      username: this.state.username,
-      password: this.state.password,
+      mail: this.state.mail,
+      phone: this.state.phone,
       firstName: this.state.firstName,
       lastName: this.state.lastName
     };
@@ -62,8 +63,8 @@ class Register extends React.Component {
       .then(res => console.log(res.data));
 
     this.setState({
-      username: "",
-      password: "",
+      mail: "",
+      phone: "",
       firstName: "",
       lastName: ""
     });
@@ -83,26 +84,21 @@ class Register extends React.Component {
           <Col xs={12} sm={8} md={8} lg={10}>
             <ListGroup>
               <ListGroup.Item>
-                <img
-                  className="d-block w-100"
-                  src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                  style={{
-                    maxWidth: "1000px",
-                    marginLeft: "auto",
-                    marginRight: "auto"
-                  }}
+                <Image
+                  src="https://images.pexels.com/photos/580613/pexels-photo-580613.jpeg?cs=srgb&dl=adults-apron-business-counter-580613.jpg&fm=jpg"
+                  fluid
                 />
                 <Form onSubmit={this.onSubmit}>
                   <Form.Group as={Row} controlId="formHorizontalUser">
                     <Form.Label column sm={12} md={12}>
-                      <h3>Usuario</h3>
+                      <h3>Mail</h3>
                     </Form.Label>
                     <Col sm={12} md={12}>
                       <Form.Control
                         type="text"
-                        placeholder="Usuario"
-                        value={this.state.username}
-                        onChange={this.onChangeUsername}
+                        placeholder="Mail"
+                        value={this.state.mail}
+                        onChange={this.onChangeMail}
                         required
                       />
                     </Col>
@@ -110,14 +106,14 @@ class Register extends React.Component {
 
                   <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={12} md={12}>
-                      <h3>Contraseña</h3>
+                      <h3>Telefono</h3>
                     </Form.Label>
                     <Col sm={12} md={12}>
                       <Form.Control
                         type="text"
-                        placeholder="Contraseña"
-                        value={this.state.password}
-                        onChange={this.onChangePassword}
+                        placeholder="Telefono"
+                        value={this.state.phone}
+                        onChange={this.onChangePhone}
                         required
                       />
                     </Col>
@@ -165,61 +161,6 @@ class Register extends React.Component {
           </Col>
           <Col xs={12} sm={2} md={2} lg={1} />
         </Row>
-        {/*
-        <h3>Registrarse</h3>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Email: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-            />
-          </div>
-          <div className="form-group">
-            <label>Contraseña: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.password}
-              onChange={this.onChangePassword}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Nombre: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.firstName}
-              onChange={this.onChangeFirstName}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Apellido: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.lastName}
-              onChange={this.onChangeLastName}
-            />
-          </div>
-
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Crear usuario"
-              className="btn btn-primary"
-            />
-          </div>
-        </form>
-        */}
       </div>
     );
   }
