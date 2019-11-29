@@ -6,6 +6,7 @@ import WelcomePage from "./components/WelcomePage";
 import Register from "./components/Register";
 import Menu from "./components/Menu";
 import About from "./components/About";
+import Sent from "./components/Sent";
 
 //https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/Registrarse" component={Register} />
       <Route path="/Menu" component={Menu} />
       <Route path="/Nosotros" component={About} />
+      <Route path="/Sent" component={Sent} />
     </Router>
   );
 }

@@ -8,6 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import LeafletMap from "./LeafletMap";
 import Form from "react-bootstrap/Form";
 import "./FoodList.css";
+import { Link } from "react-router-dom";
 
 const Food = props => (
   <div
@@ -282,13 +283,16 @@ export default class FoodList extends Component {
 
                       <Form.Group as={Row}>
                         <Col>
-                          <Button
+                       
+                          <Button 
                             onClick={() => {
                               this.createOrder();
                             }}
                           >
                             Continuar ${this.state.total}
                           </Button>
+                        
+                         
                           {/*<Button onClick={this.position}>aaa</Button>*/}
                         </Col>
                       </Form.Group>
