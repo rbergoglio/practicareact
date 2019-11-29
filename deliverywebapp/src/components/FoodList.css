@@ -12,7 +12,7 @@
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
   background-color: #b15a0a !important;
-  border-color: #815007 !important; /*set the color you want here*/
+  border-color: #815007 !important;
   outline-color: orange !important;
   box-shadow: orange !important;
   -webkit-box-shadow: none !important;

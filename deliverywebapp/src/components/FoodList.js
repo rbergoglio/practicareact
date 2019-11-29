@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import FoodItem from "./FoodItem";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Row, Col } from "react-flexbox-grid";
 import Modal from "react-bootstrap/Modal";
-import AboutUs from "./AboutUs";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
+import LeafletMap from "./LeafletMap";
 import Form from "react-bootstrap/Form";
 import "./FoodList.css";
 
@@ -34,7 +30,6 @@ const Food = props => (
           onClick={() => {
             props.addFood(props.food.price, props.food.foodName);
           }}
-          className="button"
         >
           +
         </Button>
@@ -61,7 +56,7 @@ function Example() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Launch demo modal {setShow}
       </Button>
 
       <Modal size="lg" show={show} onHide={handleClose} className="modal">
@@ -100,7 +95,7 @@ export default class FoodList extends Component {
       cart: [],
       phone: "",
       longitude: null,
-      latitude:null
+      latitude: null
     };
   }
 
@@ -155,7 +150,6 @@ export default class FoodList extends Component {
   }
 
   componentDidMount() {
-
     axios
       .get("https://rbergoglio-deliveryapp.herokuapp.com/food")
       .then(response => {
@@ -167,7 +161,6 @@ export default class FoodList extends Component {
   }
 
   createOrder() {
-
     const order = {
       plates: this.state.cart,
       deliveryman: this.state.deliveryman,
@@ -218,13 +211,17 @@ export default class FoodList extends Component {
 
   position = async () => {
     await navigator.geolocation.getCurrentPosition(
-      position => this.setState({ 
-        latitude: position.coords.latitude, 
-        longitude: position.coords.longitude
-      }, () => alert(position.coords.longitude) ), 
+      position =>
+        this.setState(
+          {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          },
+          () => alert(position.coords.longitude)
+        ),
       err => console.log(err)
     );
-  }
+  };
 
   render() {
     return (
@@ -251,7 +248,7 @@ export default class FoodList extends Component {
               <ListGroup.Item>
                 <Row>
                   <Col xs={12} sm={12} md={6} lg={6}>
-                    <AboutUs></AboutUs>
+                    <LeafletMap />
                   </Col>
                   <Col xs={12} sm={12} md={6} lg={6}>
                     <Form>
@@ -294,9 +291,7 @@ export default class FoodList extends Component {
                           >
                             Continuar ${this.state.total}
                           </Button>
-                          <Button onClick={this.position}>
-                            aaa
-                          </Button>
+                          <Button onClick={this.position}>aaa</Button>
                         </Col>
                       </Form.Group>
                     </Form>

@@ -8,9 +8,23 @@ import {
   Polygon
 } from "react-leaflet";
 
-//todo: buscar geocoding gratis o usar google maps 
+import L from "leaflet";
+//todo: buscar geocoding gratis o usar google maps
 
-export class AboutUs extends React.Component {
+export const suitcasePoint = new L.Icon({
+  iconUrl:
+    "https://pngriver.com/wp-content/uploads/2018/04/Download-Hamburger-PNG-Transparent-Image.png",
+  iconRetinaUrl:
+    "https://pngriver.com/wp-content/uploads/2018/04/Download-Hamburger-PNG-Transparent-Image.png",
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -35],
+  iconSize: [40, 40],
+  shadowUrl: "../assets/marker-shadow.png",
+  shadowSize: [29, 40],
+  shadowAnchor: [7, 40]
+});
+
+export class LeafletMap extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -52,33 +66,18 @@ export class AboutUs extends React.Component {
 
   position = async () => {
     await navigator.geolocation.getCurrentPosition(
-      position => this.setState({ 
-        lat2: position.coords.latitude, 
-        lng2: position.coords.longitude
-      }, () => alert(position.coords.longitude) ), 
+      position =>
+        this.setState({
+          lat2: position.coords.latitude,
+          lng2: position.coords.longitude
+        }),
       err => console.log(err)
     );
-  }
+  };
 
   handleClick = e => {
     const { lat, lng } = e.latlng;
     this.setState({ lat2: lat, lng2: lng });
-
-    {
-      /*
-       alert(this.state.lat2);
-    alert(this.state.lng2);
-    alert(
-      this.distance(
-        this.state.lat,
-        this.state.lng,
-        this.state.lat2,
-        this.state.lng2,
-        "K"
-      )
-    );
-    */
-    }
   };
 
   render() {
@@ -119,14 +118,14 @@ export class AboutUs extends React.Component {
           fillOpacity="0.1"
         ></Polygon>
 
-        <Marker position={position}>
+        <Marker position={position} icon={suitcasePoint}>
           <Popup>
             <span>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Nuestro local <br /> Tacuari 425.
             </span>
           </Popup>
         </Marker>
-        <Marker position={position2} color="red"></Marker>
+        <Marker position={position2}></Marker>
 
         <Polyline positions={[position, position2]} />
       </Map>
@@ -134,4 +133,4 @@ export class AboutUs extends React.Component {
   }
 }
 
-export default AboutUs;
+export default LeafletMap;

@@ -1,5 +1,9 @@
 import React from "react";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
+import { Row, Col } from "react-flexbox-grid";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 
 class Register extends React.Component {
   constructor(props) {
@@ -74,6 +78,94 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <Row style={{ margin: "0px" }}>
+          <Col xs={12} sm={2} md={2} lg={1} />
+          <Col xs={12} sm={8} md={8} lg={10}>
+            <ListGroup>
+              <ListGroup.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  style={{
+                    maxWidth: "1000px",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                />
+                <Form onSubmit={this.onSubmit}>
+                  <Form.Group as={Row} controlId="formHorizontalUser">
+                    <Form.Label column sm={12} md={12}>
+                      <h3>Usuario</h3>
+                    </Form.Label>
+                    <Col sm={12} md={12}>
+                      <Form.Control
+                        type="text"
+                        placeholder="Usuario"
+                        value={this.state.username}
+                        onChange={this.onChangeUsername}
+                        required
+                      />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalPassword">
+                    <Form.Label column sm={12} md={12}>
+                      <h3>Contraseña</h3>
+                    </Form.Label>
+                    <Col sm={12} md={12}>
+                      <Form.Control
+                        type="text"
+                        placeholder="Contraseña"
+                        value={this.state.password}
+                        onChange={this.onChangePassword}
+                        required
+                      />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalFirstName">
+                    <Form.Label column sm={12} md={12}>
+                      <h3>Nombre</h3>
+                    </Form.Label>
+                    <Col sm={12} md={12}>
+                      <Form.Control
+                        type="text"
+                        placeholder="Nombre"
+                        value={this.state.firstName}
+                        onChange={this.onChangeFirstName}
+                        required
+                      />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalLastName">
+                    <Form.Label column sm={12} md={12}>
+                      <h3>Apellido</h3>
+                    </Form.Label>
+                    <Col sm={12} md={12}>
+                      <Form.Control
+                        type="text"
+                        placeholder="Apellido"
+                        value={this.state.lastName}
+                        onChange={this.onChangeLastName}
+                        required
+                      />
+                    </Col>
+                  </Form.Group>
+
+                  <Form.Group as={Row}>
+                    <Col>
+                      <Button type="submit">Continuar</Button>
+                      {/* esto me tira un warning */}
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </ListGroup.Item>
+            </ListGroup>
+          </Col>
+          <Col xs={12} sm={2} md={2} lg={1} />
+        </Row>
+        {/*
         <h3>Registrarse</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -127,6 +219,7 @@ class Register extends React.Component {
             />
           </div>
         </form>
+        */}
       </div>
     );
   }
