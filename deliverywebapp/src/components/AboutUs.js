@@ -8,7 +8,7 @@ import {
   Polygon
 } from "react-leaflet";
 
-//todo: buscar geocoding gratis o usar google maps y listo
+//todo: buscar geocoding gratis o usar google maps 
 
 export class AboutUs extends React.Component {
   constructor() {
@@ -27,6 +27,7 @@ export class AboutUs extends React.Component {
   componentDidMount() {
     const map = this.refs.map.leafletElement;
     setTimeout(() => map.invalidateSize(true), 250);
+    this.position();
   }
 
   distance(lat1, lon1, lat2, lon2, unit) {
@@ -48,6 +49,17 @@ export class AboutUs extends React.Component {
     }
     return dist * 1000;
   }
+
+  position = async () => {
+    await navigator.geolocation.getCurrentPosition(
+      position => this.setState({ 
+        lat2: position.coords.latitude, 
+        lng2: position.coords.longitude
+      }, () => alert(position.coords.longitude) ), 
+      err => console.log(err)
+    );
+  }
+
   handleClick = e => {
     const { lat, lng } = e.latlng;
     this.setState({ lat2: lat, lng2: lng });

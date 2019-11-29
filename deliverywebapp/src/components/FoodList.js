@@ -98,7 +98,9 @@ export default class FoodList extends Component {
       total: 0,
       address: "",
       cart: [],
-      phone: ""
+      phone: "",
+      longitude: null,
+      latitude:null
     };
   }
 
@@ -153,6 +155,7 @@ export default class FoodList extends Component {
   }
 
   componentDidMount() {
+
     axios
       .get("https://rbergoglio-deliveryapp.herokuapp.com/food")
       .then(response => {
@@ -164,6 +167,7 @@ export default class FoodList extends Component {
   }
 
   createOrder() {
+
     const order = {
       plates: this.state.cart,
       deliveryman: this.state.deliveryman,
@@ -212,6 +216,16 @@ export default class FoodList extends Component {
     });
   }
 
+  position = async () => {
+    await navigator.geolocation.getCurrentPosition(
+      position => this.setState({ 
+        latitude: position.coords.latitude, 
+        longitude: position.coords.longitude
+      }, () => alert(position.coords.longitude) ), 
+      err => console.log(err)
+    );
+  }
+
   render() {
     return (
       <div>
@@ -242,29 +256,31 @@ export default class FoodList extends Component {
                   <Col xs={12} sm={12} md={6} lg={6}>
                     <Form>
                       <Form.Group as={Row} controlId="formHorizontalAddress">
-                        <Form.Label column sm={2}>
+                        <Form.Label column sm={12} md={12}>
                           Dirección
                         </Form.Label>
-                        <Col sm={10}>
+                        <Col sm={12} md={12}>
                           <Form.Control
                             type="text"
                             placeholder="Dirección"
                             value={this.state.address}
                             onChange={this.onChangeAddress}
+                            required
                           />
                         </Col>
                       </Form.Group>
 
                       <Form.Group as={Row} controlId="formHorizontalPhone">
-                        <Form.Label column sm={2}>
+                        <Form.Label column sm={12} md={12}>
                           Telefono
                         </Form.Label>
-                        <Col sm={10}>
+                        <Col sm={12} md={12}>
                           <Form.Control
                             type="text"
                             placeholder="Telefono"
                             value={this.state.phone}
                             onChange={this.onChangePhone}
+                            required
                           />
                         </Col>
                       </Form.Group>
@@ -277,6 +293,9 @@ export default class FoodList extends Component {
                             }}
                           >
                             Continuar ${this.state.total}
+                          </Button>
+                          <Button onClick={this.position}>
+                            aaa
                           </Button>
                         </Col>
                       </Form.Group>
