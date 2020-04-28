@@ -46,33 +46,7 @@ const Food = props => (
   </div>
 );
 
-function Example() {
-  const [show, setShow] = React.useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal {setShow}
-      </Button>
-
-      <Modal size="lg" show={show} onHide={handleClose} className="modal">
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="secondary">Close</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
 
 export default class FoodList extends Component {
   constructor(props) {
@@ -129,14 +103,14 @@ export default class FoodList extends Component {
         cart: []
         //plates: []
       } //,
-      //() => alert("Carrito borrado")
+
     );
   }
 
   removeFood(plate, price) {
     let index = this.state.cart.indexOf(plate);
 
-    //alert(typeof this.state.cart + "spliced: " + arr);
+
 
     if (index > -1) {
       this.setState(prevState => ({
@@ -234,8 +208,7 @@ export default class FoodList extends Component {
               <ListGroup.Item>Carrito ${this.state.total}</ListGroup.Item>
               {this.cartList()}
               <ListGroup.Item>
-                {/*  <Example></Example> */}
-
+               
                 <Button
                   onClick={() => {
                     this.clearFood();
@@ -293,7 +266,6 @@ export default class FoodList extends Component {
                           </Button>
                         
                          
-                          {/*<Button onClick={this.position}>aaa</Button>*/}
                         </Col>
                       </Form.Group>
                     </Form>
