@@ -85,9 +85,13 @@ class Register extends React.Component {
             <ListGroup>
               <ListGroup.Item>
                 <Image
-                  src="https://images.pexels.com/photos/580613/pexels-photo-580613.jpeg?cs=srgb&dl=adults-apron-business-counter-580613.jpg&fm=jpg"
+                  src="https://images.pexels.com/photos/2438323/pexels-photo-2438323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                   fluid
                 />
+                <span style={{margin: "20px"}}>
+                Envía tus datos a nuestra base de datos para recibir nuestras ofertas laborales y promociones.
+
+                </span>
                 <Form onSubmit={this.onSubmit}>
                   <Form.Group as={Row} controlId="formHorizontalUser">
                     <Form.Label column sm={12} md={12}>

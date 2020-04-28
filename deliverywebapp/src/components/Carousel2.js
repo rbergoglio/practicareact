@@ -14,7 +14,7 @@ class Carousel2 extends React.Component {
           />
           <Carousel.Caption>
             <h3>Hace tu pedido</h3>
-            <p>Pedi YA</p>
+            <p>Pedi YA las 24hs</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
